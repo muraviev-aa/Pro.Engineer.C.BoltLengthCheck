@@ -51,3 +51,14 @@ int read_data_file(FILE **fptr, bolt info[])
     }
     return count;
 }
+
+// Вывод информации о приложении
+void print_info(void)
+{
+    STR_LINE;
+    puts("\tConsole application \"Checking bolt length\"");
+    puts("Developer Muraviev A.A.");
+    puts("All rights reserved");
+    puts("For help with the program, use the -h argument");
+    STR_LINE;
+}

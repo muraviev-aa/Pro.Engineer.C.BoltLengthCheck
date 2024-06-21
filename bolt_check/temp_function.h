@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <unistd.h>
+#define STR_LINE puts("#########################################################################")
 
 typedef struct
 {
@@ -16,6 +17,7 @@ typedef struct
     double chamfer;
 } bolt;
 
+void print_info(void);
 int open_file(FILE **fptr, char *name_file);
 void print(bolt *arr, int size_struct);
 void add_record(bolt info[], int number, unsigned int bolt_name, double washer_thickness,

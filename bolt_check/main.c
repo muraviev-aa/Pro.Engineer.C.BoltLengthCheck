@@ -11,6 +11,9 @@ int main(int argc, char *argv[])
     char *file_name;
     int count;
     opterr=0; // отключить вывод сообщений об ошибках
+    if (argc == 1)
+        print_info();
+    // Работа с аргументами командной строки
     while ((rez = getopt(argc, argv, "hf:m:l:s:t:")) != -1)
     {
         switch (rez)
