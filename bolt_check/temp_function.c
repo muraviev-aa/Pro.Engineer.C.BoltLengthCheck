@@ -67,12 +67,14 @@ void print_help(void)
 {
     STR_LINE;
     puts("\t\t\t\tHELP");
-    puts("List keys:");
+    puts("~~~ List keys:");
     puts("-h\t\t\thelp application;");
-    puts("-f file_name.csv\tfile with dimensions;");
-    puts("-m thread diameter\tindicate thread diameter;");
-    puts("-l thread length\tindicate thread length;");
-    puts("-s thickness of parts\ttotal thickness of parts on the bolt head side;");
-    puts("-t thickness of parts\tthickness of one part from the nut side.");
+    puts("-f: file_name.csv\tfile with dimensions;");
+    puts("-m: thread diameter\tindicate thread diameter;");
+    puts("-l: bolt length\t\tindicate bolt length;");
+    puts("-s: thickness of parts\ttotal thickness of parts on the bolt head side;");
+    puts("-t: thickness of parts\tthickness of one part from the nut side.");
+    puts("-w: washer/head\t\twasher under the bolt head;");
+    puts("-n:: washer/nut\t\tsecond washer under the nut;");
     STR_LINE;
 }

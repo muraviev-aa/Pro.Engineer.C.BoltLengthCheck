@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     if (argc == 1)
         print_info();
     // Работа с аргументами командной строки
-    while ((rez = getopt(argc, argv, "hf:m:l:s:t:")) != -1)
+    while ((rez = getopt(argc, argv, "hf:m:l:s:t:w:n::")) != -1)
     {
         switch (rez)
         {
@@ -36,6 +36,12 @@ int main(int argc, char *argv[])
                 break;
             case 't':
                 printf("found argument \"t = %s\".\n", optarg);
+                break;
+            case 'w':
+                printf("found argument \"w = %s\".\n", optarg);
+                break;
+            case 'n':
+                printf("found argument \"n = %s\".\n", optarg);
                 break;
             case '?':
                 printf("Error found !\n");
