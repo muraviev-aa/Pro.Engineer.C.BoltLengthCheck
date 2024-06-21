@@ -18,6 +18,7 @@ typedef struct
 } bolt;
 
 void print_info(void);
+void print_help(void);
 int open_file(FILE **fptr, char *name_file);
 void print(bolt *arr, int size_struct);
 void add_record(bolt info[], int number, unsigned int bolt_name, double washer_thickness,

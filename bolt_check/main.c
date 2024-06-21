@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     int rez = 0;
     char *file_name;
     int count;
-    opterr=0; // отключить вывод сообщений об ошибках
+    opterr = 0; // отключить вывод сообщений об ошибках
     if (argc == 1)
         print_info();
     // Работа с аргументами командной строки
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
         switch (rez)
         {
             case 'h':
-                printf("found argument \"h\".\n");
+                print_help();
                 break;
             case 'f':
                 file_name = optarg;

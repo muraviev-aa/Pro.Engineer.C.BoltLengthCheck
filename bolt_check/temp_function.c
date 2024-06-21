@@ -44,7 +44,7 @@ int read_data_file(FILE **fptr, bolt info[])
     double washer_thickness, nut_height, thread_pitch, chamfer;
     int count = 0;
     while (fscanf(*fptr, "%d;%lf;%lf;%d;%lf;%lf", &bolt_name, &washer_thickness, &nut_height,
-                            &thread_length, &thread_pitch, &chamfer) > 0)
+                  &thread_length, &thread_pitch, &chamfer) > 0)
     {
         add_record(info, count, bolt_name, washer_thickness, nut_height, thread_length, thread_pitch, chamfer);
         count++;
@@ -60,5 +60,19 @@ void print_info(void)
     puts("Developer Muraviev A.A.");
     puts("All rights reserved");
     puts("For help with the program, use the -h argument");
+    STR_LINE;
+}
+
+void print_help(void)
+{
+    STR_LINE;
+    puts("\t\t\t\tHELP");
+    puts("List keys:");
+    puts("-h\t\t\thelp application;");
+    puts("-f file_name.csv\tfile with dimensions;");
+    puts("-m thread diameter\tindicate thread diameter;");
+    puts("-l thread length\tindicate thread length;");
+    puts("-s thickness of parts\ttotal thickness of parts on the bolt head side;");
+    puts("-t thickness of parts\tthickness of one part from the nut side.");
     STR_LINE;
 }
