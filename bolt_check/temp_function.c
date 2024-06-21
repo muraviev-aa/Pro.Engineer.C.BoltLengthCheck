@@ -73,8 +73,19 @@ void print_help(void)
     puts("-m: thread diameter\tindicate thread diameter;");
     puts("-l: bolt length\t\tindicate bolt length;");
     puts("-s: thickness of parts\ttotal thickness of parts on the bolt head side;");
-    puts("-t: thickness of parts\tthickness of one part from the nut side.");
+    puts("-t: thickness of part\tthickness of one part from the nut side.");
     puts("-w: washer/head\t\twasher under the bolt head;");
-    puts("-n:: washer/nut\t\tsecond washer under the nut;");
+    puts("-n:: washer/nut\t\twasher under the nut;");
+    STR_LINE;
+}
+
+void print_input_data(int thread_diameter, int bolt_length, int thick_parts,
+                      int thick_part_nut, int flag_head, int flag_nut)
+{
+    STR_LINE;
+    printf("%s%12s%12s%15s%12s%12s\n", "BoltDiam", "BoltLength", "ThickParts",
+           "ThickPartNut", "WasherHead", "WasherNut");
+    printf("%8d%12d%12d%15d%12d%12d\n", thread_diameter, bolt_length, thick_parts,
+           thick_part_nut, flag_head, flag_nut);
     STR_LINE;
 }
