@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
     print_input_data(connect_package);
     open_file(&fptr, file_name);
     count = read_data_file(&fptr, info);
-    bolt_check(info, count, connect_package);
+    bolt_check_thread_part(info, count, connect_package);
     //printf("%d\n", count);
     //print(info, count);
 

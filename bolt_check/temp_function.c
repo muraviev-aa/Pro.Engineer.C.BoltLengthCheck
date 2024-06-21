@@ -90,17 +90,30 @@ void print_input_data(int *arr)
     STR_LINE;
 }
 
-// Проверка болта
-void bolt_check(bolt info[], int number, int *arr)
+// Проверка - резьба в детали, резьба в шайбе
+int bolt_check_thread_part(bolt info[], int number, int *arr)
 {
+    double thread_result = 0;
     for (int i = 0; i < number; i++)
     {
         if (info[i].bolt_name == arr[0])
         {
-            printf("Bold diam is M%d\n", info[i].bolt_name);
-            printf("Bolt thread_length is %d\n", info[i].thread_length);
+            //printf("Bold diam is M%d\n", info[i].bolt_name);
+            //printf("Bolt thread_length is %d\n", info[i].thread_length);
+            thread_result = arr[4] * info[i].washer_thickness + arr[2] + arr[3] - arr[1] - info[i].thread_length;
+            if (thread_result > 0.5 * arr[3])
+            {
+                printf("Thread in detail %.1f\n", thread_result);
+                return 1;
+            } else if (thread_result < 0.5 * arr[3] && thread_result <= info[i].washer_thickness * arr[5])
+            {
+                printf("Thread in washer %.1f\n", thread_result);
+                return 1;
+            } else
+                printf("The nut will tighten\n");
         }
     }
+    return 0;
 }
 
 // Проверка диаметра болта
