@@ -3,13 +3,15 @@
 #include "temp_function.h"
 #define SIZE 10
 
+int connect_package[6];
+
 int main(int argc, char *argv[])
 {
     bolt info[SIZE];
     FILE *fptr;
     int rez = 0;
     char *file_name;
-    int count, thread_diameter, bolt_length, thick_parts, thick_part_nut, flag_head, flag_nut;
+    int count;
     opterr = 0; // отключить вывод сообщений об ошибках
     if (argc == 1)
         print_info();
@@ -26,38 +28,38 @@ int main(int argc, char *argv[])
                 printf("File name is %s.\n", file_name);
                 break;
             case 'm':
-                thread_diameter = atoi(optarg);
-                //printf("Thread diameter is M%d.\n", thread_diameter);
+                // Диаметр резьбовой части болта
+                bolt_diam_check(connect_package[0] = atoi(optarg));
                 break;
             case 'l':
-                bolt_length = atoi(optarg);
-                //printf("Bolt length is %d.\n", bolt_length);
+                // Длина болта [мм]
+                connect_package[1] = atoi(optarg);
                 break;
             case 's':
-                thick_parts = atoi(optarg);
-                //printf("Thickness of parts is %d.\n", thickness_parts);
+                // Толщина соединяемых деталей под головкой болта [мм]
+                connect_package[2] = atoi(optarg);
                 break;
             case 't':
-                thick_part_nut = atoi(optarg);
-                //printf("Thickness of one part from the nut side is %d.\n", thickness_part_nut);
+                // Толщина одной детали под гайкой [мм]
+                connect_package[3] = atoi(optarg);
                 break;
             case 'w':
-                flag_head = atoi(optarg);
-                //printf("Washer under the bolt head is %d.\n", flag_head);
+                // Количество шайб под головкой болта
+                connect_package[4] = atoi(optarg);
                 break;
             case 'n':
-                flag_nut = atoi(optarg);
-                //printf("Washer under the nut is %d.\n", flag_nut);
+                // Количество шайб под гайкой
+                connect_package[5] = atoi(optarg);
                 break;
             case '?':
                 printf("Error found !\n");
                 break;
         }
     }
-    print_input_data(thread_diameter, bolt_length, thick_parts,
-                     thick_part_nut, flag_head, flag_nut);
-    //open_file(&fptr, file_name);
-    //count = read_data_file(&fptr, info);
+    print_input_data(connect_package);
+    open_file(&fptr, file_name);
+    count = read_data_file(&fptr, info);
+    bolt_check(info, count, connect_package);
     //printf("%d\n", count);
     //print(info, count);
 

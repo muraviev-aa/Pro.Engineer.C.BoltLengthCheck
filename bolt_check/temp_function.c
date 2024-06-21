@@ -63,6 +63,7 @@ void print_info(void)
     STR_LINE;
 }
 
+// Печать меню HELP
 void print_help(void)
 {
     STR_LINE;
@@ -79,13 +80,36 @@ void print_help(void)
     STR_LINE;
 }
 
-void print_input_data(int thread_diameter, int bolt_length, int thick_parts,
-                      int thick_part_nut, int flag_head, int flag_nut)
+// Печать входных данных
+void print_input_data(int *arr)
 {
     STR_LINE;
     printf("%s%12s%12s%15s%12s%12s\n", "BoltDiam", "BoltLength", "ThickParts",
            "ThickPartNut", "WasherHead", "WasherNut");
-    printf("%8d%12d%12d%15d%12d%12d\n", thread_diameter, bolt_length, thick_parts,
-           thick_part_nut, flag_head, flag_nut);
+    printf("%8d%12d%12d%15d%12d%12d\n", arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
     STR_LINE;
+}
+
+// Проверка болта
+void bolt_check(bolt info[], int number, int *arr)
+{
+    for (int i = 0; i < number; i++)
+    {
+        if (info[i].bolt_name == arr[0])
+        {
+            printf("Bold diam is M%d\n", info[i].bolt_name);
+            printf("Bolt thread_length is %d\n", info[i].thread_length);
+        }
+    }
+}
+
+// Проверка диаметра болта
+void bolt_diam_check(int diam)
+{
+    if (diam != 6 && diam != 8 && diam != 10 && diam != 12 && diam != 16
+        && diam != 20 && diam != 24 && diam != 30)
+    {
+        puts("!!! Incorrect bolt length entered !!!");
+        exit(1);
+    }
 }
