@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #include "temp_function.h"
 
 // Открыть файл
@@ -98,16 +100,18 @@ int bolt_check_thread_part(bolt info[], int number, int *arr)
     {
         if (info[i].bolt_name == arr[0])
         {
-            //printf("Bold diam is M%d\n", info[i].bolt_name);
-            //printf("Bolt thread_length is %d\n", info[i].thread_length);
-            thread_result = arr[4] * info[i].washer_thickness + arr[2] + arr[3] - arr[1] - info[i].thread_length;
+            printf("%s%12s%12s%14s%10s\n", "WashThick", "NutHeight", "ThreadLen", "ThreadPitch", "Chamfer");
+            printf("%8.1f%12.1f%12d%14.1f%10.1f\n", info[i].washer_thickness, info[i].nut_height,
+                   info[i].thread_length, info[i].thread_pitch, info[i].chamfer);
+            STR_LINE;
+            thread_result = arr[4] * info[i].washer_thickness + arr[2] + arr[3] - arr[1] + info[i].thread_length;
             if (thread_result > 0.5 * arr[3])
             {
-                printf("Thread in detail %.1f\n", thread_result);
+                printf("Thread in detail %.1f\n", fabs(thread_result));
                 return 1;
             } else if (thread_result < 0.5 * arr[3] && thread_result <= info[i].washer_thickness * arr[5])
             {
-                printf("Thread in washer %.1f\n", thread_result);
+                printf("Thread in washer %.1f\n", fabs(thread_result));
                 return 1;
             } else
                 printf("The nut will tighten\n");
