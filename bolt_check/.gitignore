@@ -1,5 +1,5 @@
 
-bolt_check_thread_part/CMakeLists.txt
-/bolt_check_thread_part/.idea
-/bolt_check_thread_part/cmake-build-debug/.cmake
-/bolt_check_thread_part/cmake-build-debug
+bolt_check_thread/CMakeLists.txt
+/bolt_check_thread/.idea
+/bolt_check_thread/cmake-build-debug/.cmake
+/bolt_check_thread/cmake-build-debug

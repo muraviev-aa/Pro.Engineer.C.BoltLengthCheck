@@ -93,22 +93,22 @@ void print_input_data(int *arr)
     STR_LINE;
 }
 
-// Проверка: 1. резьба в детали (превышение 0.5t крайней детали)
-//           2. резьба в шайбе (возможность закрутить гайку)
-int bolt_check_thread_part(bolt info[], int number, int *arr)
+// Проверка 1. Резьба в детали (превышение 0.5t крайней к гайке детали)
+// Проверка 2. Резьба в шайбе (возможность закрутить гайку)
+int bolt_check_thread(bolt info[], int number, int *arr)
 {
-    double thread_result = 0;
+    double thread_result;
     for (int i = 0; i < number; i++)
     {
         if (info[i].bolt_name == arr[0])
         {
+            thread_result = arr[4] * info[i].washer_thickness + arr[2] + arr[3] - arr[1] + info[i].thread_length;
             printf("\t\t\t*** GOST DATA ***\n");
             printf("%s%12s%12s%14s%10s\n", "WashThick", "NutHeight", "ThreadLen", "ThreadPitch", "Chamfer");
             printf("%8.1f%12.1f%12d%14.1f%10.1f\n", info[i].washer_thickness, info[i].nut_height,
                    info[i].thread_length, info[i].thread_pitch, info[i].chamfer);
             STR_LINE;
             printf("\t\t\t*** THREAD POSITION ***\n");
-            thread_result = arr[4] * info[i].washer_thickness + arr[2] + arr[3] - arr[1] + info[i].thread_length;
             if (thread_result > 0.5 * arr[3]) // резьба в крайней детали
             {
                 printf("Thread in detail %.1f ", fabs(thread_result));
@@ -125,6 +125,30 @@ int bolt_check_thread_part(bolt info[], int number, int *arr)
                     printf("!!! Do not tighten the nut !!!");
                     return 2;
                 }
+            }
+        }
+    }
+    return 0;
+}
+
+// Проверка 3. Проверка длины конца болта (не менее двух шагов резьбы)
+int bolt_tip_check(bolt info[], int number, int *arr)
+{
+    double bolt_tip;
+    printf("\n");
+    STR_LINE;
+    printf("\t\t\t*** BOLT TIP ***\n");
+    for (int i = 0; i < number; i++)
+    {
+        if (info[i].bolt_name == arr[0])
+        {
+            bolt_tip = arr[1] - info[i].washer_thickness * arr[4] - arr[2] - arr[3] -
+                       info[i].washer_thickness * arr[5] - 2 * info[i].nut_height;
+            printf("Bolt tip is %.1f ", bolt_tip);
+            if (bolt_tip <= 2 * info[i].thread_pitch + info[i].chamfer)
+            {
+                printf("!!! Short bolt tip !!!");
+                return 3;
             }
         }
     }

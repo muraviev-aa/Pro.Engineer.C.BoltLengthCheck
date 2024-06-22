@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     bolt info[SIZE];
     FILE *fptr;
     int rez, flag = 0;
-    int result1_2;
+    int result1_2, result3;
     char *file_name;
     int count;
     opterr = 0; // отключить вывод сообщений об ошибках
@@ -66,7 +66,8 @@ int main(int argc, char *argv[])
         print_input_data(connect_package);
     open_file(&fptr, file_name);
     count = read_data_file(&fptr, info);
-    result1_2 = bolt_check_thread_part(info, count, connect_package);
+    result1_2 = bolt_check_thread(info, count, connect_package);
+    bolt_tip_check(info, count, connect_package);
     print_result_check(result1_2);
     //printf("%d\n", count);
     //print(info, count);
