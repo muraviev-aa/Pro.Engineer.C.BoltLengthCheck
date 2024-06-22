@@ -92,7 +92,8 @@ void print_input_data(int *arr)
     STR_LINE;
 }
 
-// Проверка - резьба в детали, резьба в шайбе
+// Проверка: 1. резьба в детали (превышение 0.5t крайней детали)
+//           2. резьба в шайбе (возможность закрутить гайку)
 int bolt_check_thread_part(bolt info[], int number, int *arr)
 {
     double thread_result = 0;
@@ -105,16 +106,23 @@ int bolt_check_thread_part(bolt info[], int number, int *arr)
                    info[i].thread_length, info[i].thread_pitch, info[i].chamfer);
             STR_LINE;
             thread_result = arr[4] * info[i].washer_thickness + arr[2] + arr[3] - arr[1] + info[i].thread_length;
-            if (thread_result > 0.5 * arr[3])
+            if (thread_result > 0.5 * arr[3]) // резьба в крайней детали
             {
-                printf("Thread in detail %.1f\n", fabs(thread_result));
-                return 1;
-            } else if (thread_result < 0.5 * arr[3] && thread_result <= info[i].washer_thickness * arr[5])
+                printf("Thread in detail %.1f ", fabs(thread_result));
+                if (fabs(thread_result) > 0.5 * arr[3])
+                {
+                    printf("!!! The thread goes into the part !!!\n");
+                    return 1;
+                }
+            } else if (thread_result < 0.5 * arr[3]) // резьба в шайбе
             {
-                printf("Thread in washer %.1f\n", fabs(thread_result));
-                return 1;
-            } else
-                printf("The nut will tighten\n");
+                printf("Thread in washer %.1f ", fabs(thread_result));
+                if (fabs(thread_result) > arr[5] * info[i].washer_thickness)
+                {
+                    printf("!!! Do not tighten the nut !!!\n");
+                    return 2;
+                }
+            }
         }
     }
     return 0;
@@ -126,7 +134,13 @@ void bolt_diam_check(int diam)
     if (diam != 6 && diam != 8 && diam != 10 && diam != 12 && diam != 16
         && diam != 20 && diam != 24 && diam != 30)
     {
-        puts("!!! Incorrect bolt length entered !!!");
+        puts("!!! Incorrect bolt diameter entered !!!\"\n");
         exit(1);
     }
+}
+
+// Печать результат расчета
+void print_result_check(int res)
+{
+
 }
