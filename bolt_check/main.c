@@ -9,13 +9,17 @@ int main(int argc, char *argv[])
 {
     bolt info[SIZE];
     FILE *fptr;
-    int rez;
+    int rez, flag = 0;
     int result1_2;
     char *file_name;
     int count;
     opterr = 0; // отключить вывод сообщений об ошибках
     if (argc == 1)
+    {
         print_info();
+        flag = 1;
+    }
+
     // Работа с аргументами командной строки
     while ((rez = getopt(argc, argv, "hf:m:l:s:t:w:n:")) != -1)
     {
@@ -23,6 +27,7 @@ int main(int argc, char *argv[])
         {
             case 'h':
                 print_help();
+                flag = 1;
                 break;
             case 'f':
                 file_name = optarg;
@@ -57,7 +62,8 @@ int main(int argc, char *argv[])
                 break;
         }
     }
-    print_input_data(connect_package);
+    if (flag != 1)
+        print_input_data(connect_package);
     open_file(&fptr, file_name);
     count = read_data_file(&fptr, info);
     result1_2 = bolt_check_thread_part(info, count, connect_package);
