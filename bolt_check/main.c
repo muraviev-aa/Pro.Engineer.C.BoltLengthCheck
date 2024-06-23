@@ -67,10 +67,7 @@ int main(int argc, char *argv[])
     open_file(&fptr, file_name);
     count = read_data_file(&fptr, info);
     result1_2 = bolt_check_thread(info, count, connect_package);
-    bolt_tip_check(info, count, connect_package);
-    print_result_check(result1_2);
-    //printf("%d\n", count);
-    //print(info, count);
-
+    result3 = bolt_tip_check(info, count, connect_package);
+    print_result_check(result1_2, result3);
     return 0;
 }

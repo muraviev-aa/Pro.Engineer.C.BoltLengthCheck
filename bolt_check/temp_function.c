@@ -93,8 +93,8 @@ void print_input_data(int *arr)
     STR_LINE;
 }
 
-// Проверка 1. Резьба в детали (превышение 0.5t крайней к гайке детали)
-// Проверка 2. Резьба в шайбе (возможность закрутить гайку)
+// Проверка 1: резьба в детали (превышение 0.5t крайней к гайке детали)
+// Проверка 2: резьба в шайбе (возможность закрутить гайку)
 int bolt_check_thread(bolt info[], int number, int *arr)
 {
     double thread_result;
@@ -131,7 +131,7 @@ int bolt_check_thread(bolt info[], int number, int *arr)
     return 0;
 }
 
-// Проверка 3. Проверка длины конца болта (не менее двух шагов резьбы)
+// Проверка 3: проверка длины конца болта (не менее двух шагов резьбы)
 int bolt_tip_check(bolt info[], int number, int *arr)
 {
     double bolt_tip;
@@ -148,7 +148,7 @@ int bolt_tip_check(bolt info[], int number, int *arr)
             if (bolt_tip <= 2 * info[i].thread_pitch + info[i].chamfer)
             {
                 printf("!!! Short bolt tip !!!");
-                return 3;
+                return 1;
             }
         }
     }
@@ -166,18 +166,24 @@ void bolt_diam_check(int diam)
     }
 }
 
-// Печать результат расчета
-void print_result_check(int res)
+// Печать результатов проверки
+void print_result_check(int res1_2, int res3)
 {
     printf("\n");
     STR_LINE;
     printf("\t\t\t*** BOLT LENGTH CHECK RESULT ***\n");
-    printf("%18s%18s\n", "ThreadRequirement", "TighteningNut");
-    if (res == 0)
-        printf("%18s%18s\n", "YES", "YES");
-    else if (res == 1)
-        printf("%18s%18s\n", "NO", "YES");
-    else if (res == 2)
-        printf("%18s%18s\n", "YES", "NO");
+    printf("%18s%18s%18s\n", "ThreadRequirement", "TighteningNut", "TipCheck");
+    if (res1_2 == 0 && res3 == 0)
+        printf("%18s%18s%18s\n", "YES", "YES", "YES");
+    else if (res1_2 == 0 && res3 == 1)
+        printf("%18s%18s%18s\n", "YES", "YES", "NO");
+    else if (res1_2 == 1 && res3 == 0)
+        printf("%18s%18s%18s\n", "NO", "YES", "YES");
+    else if (res1_2 == 1 && res3 == 1)
+        printf("%18s%18s%18s\n", "NO", "YES", "NO");
+    else if (res1_2 == 2 && res3 == 0)
+        printf("%18s%18s%18s\n", "YES", "NO", "YES");
+    else if (res1_2 == 2 && res3 == 1)
+        printf("%18s%18s%18s\n", "YES", "NO", "NO");
     STR_LINE;
 }
