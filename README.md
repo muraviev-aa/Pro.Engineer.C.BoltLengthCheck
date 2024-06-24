@@ -20,7 +20,7 @@
 #### Приложение имеет справку:
 
 <p align="center">
-<img src="images/help.png" alt="drawing" width="700"/>
+<img src="images/help.png" alt="drawing" width="650"/>
 </p>
 
 #### Приложение обрабатывает следующие аргументы командной строки:
@@ -45,19 +45,19 @@
 * длина болта удовлетворяет всем перечисленным требованиям
 
 <p align="center">
-<img src="images/yes_yes_yes.png" alt="drawing" width="700"/>
+<img src="images/yes_yes_yes.png" alt="drawing" width="650"/>
 </p>
 
 * резьба болта выходит из шайбы, гайка не закрутится
 
 <p align="center">
-<img src="images/yes_no_yes.png" alt="drawing" width="700"/>
+<img src="images/yes_no_yes.png" alt="drawing" width="650"/>
 </p>
 
 * резьба болта входит в ближнюю к гайке деталь более чем на 0,5t, резьбовой конец короткий
 
 <p align="center">
-<img src="images/no_yes_no.png" alt="drawing" width="700"/>
+<img src="images/no_yes_no.png" alt="drawing" width="650"/>
 </p>
 
 #### Состав репозитория:
