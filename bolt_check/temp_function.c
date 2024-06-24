@@ -110,15 +110,16 @@ int bolt_check_thread(bolt info[], int number, int *arr)
                    info[i].thread_length, info[i].thread_pitch, info[i].chamfer);
             STR_LINE;
             printf("\t\t\t*** THREAD POSITION ***\n");
-            if (thread_result > 0.5 * arr[3]) // резьба в крайней детали
+            //printf("NEW is %.1f\n", thread_result);
+            if (thread_result > 0) // резьба в крайней детали
             {
                 printf("Thread in detail %.1f ", fabs(thread_result));
-                if (fabs(thread_result) > 0.5 * arr[3])
+                if (thread_result > 0.5 * arr[3])
                 {
                     printf("!!! The thread goes into the part !!!");
                     return 1;
                 }
-            } else if (thread_result < 0.5 * arr[3]) // резьба в шайбе
+            } else if (thread_result < 0) // резьба в шайбе
             {
                 printf("Thread in washer %.1f ", fabs(thread_result));
                 if (fabs(thread_result) > arr[5] * info[i].washer_thickness)
@@ -126,6 +127,9 @@ int bolt_check_thread(bolt info[], int number, int *arr)
                     printf("!!! Do not tighten the nut !!!");
                     return 2;
                 }
+            } else if (thread_result == 0) // резьба на границе деталей
+            {
+                printf("Thread at the border of parts");
             }
         }
     }
