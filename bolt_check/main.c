@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "temp_function.h"
-#define SIZE 10
+#define SIZE 8 // число строк в файле
 
 int connect_package[6];
 
 int main(int argc, char *argv[])
 {
-    bolt info[SIZE];
+    bolt *info = malloc(SIZE * sizeof(bolt));
+    if (!info)
+        printf("Error while allocating memory!\n");
     FILE *fptr;
     int rez, flag = 0;
     int result1_2, result3;
@@ -66,8 +68,10 @@ int main(int argc, char *argv[])
         print_input_data(connect_package);
     open_file(&fptr, file_name);
     count = read_data_file(&fptr, info);
+    fclose(fptr);
     result1_2 = bolt_check_thread(info, count, connect_package);
     result3 = bolt_tip_check(info, count, connect_package);
     print_result_check(result1_2, result3);
+    free(info);
     return 0;
 }

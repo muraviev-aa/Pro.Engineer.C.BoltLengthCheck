@@ -63,6 +63,7 @@ void print_info(void)
     puts("All rights reserved.");
     puts("For help with the program, use the -h argument.");
     STR_LINE;
+    system("pause");
 }
 
 // Печать меню HELP
