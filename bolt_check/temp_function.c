@@ -79,7 +79,7 @@ void print_help(void)
     puts("-s: thickness of parts\ttotal thickness of parts on the bolt head side;");
     puts("-t: thickness of part\tthickness of one part from the nut side.");
     puts("-w: washer/head\t\twasher under the bolt head;");
-    puts("-n:: washer/nut\t\twasher under the nut;");
+    puts("-n: washer/nut\t\twasher under the nut;");
     STR_LINE;
 }
 
@@ -132,7 +132,7 @@ int bolt_check_thread(bolt info[], int number, int *arr)
     return 0;
 }
 
-// Проверка 3: проверка длины конца болта (не менее двух шагов резьбы)
+// Проверка 3: проверка длины конца болта (не менее одного полного витка резьбы + фаска)
 int bolt_tip_check(bolt info[], int number, int *arr)
 {
     double bolt_tip;
@@ -146,7 +146,7 @@ int bolt_tip_check(bolt info[], int number, int *arr)
             bolt_tip = arr[1] - info[i].washer_thickness * arr[4] - arr[2] - arr[3] -
                        info[i].washer_thickness * arr[5] - 2 * info[i].nut_height;
             printf("Bolt tip is %.1f ", bolt_tip);
-            if (bolt_tip <= 2 * info[i].thread_pitch + info[i].chamfer)
+            if (bolt_tip <= info[i].thread_pitch + info[i].chamfer)
             {
                 printf("!!! Short bolt tip !!!");
                 return 1;
