@@ -129,7 +129,7 @@ int bolt_check_thread(bolt info[], int number, int *arr)
                 }
             } else if (thread_result == 0) // резьба на границе деталей
             {
-                printf("Thread at the border of parts");
+                printf("Thread at the interface between the part and the washer");
             }
         }
     }
