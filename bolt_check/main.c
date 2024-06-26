@@ -11,10 +11,17 @@ int main(int argc, char *argv[])
     if (!info)
         printf("Error while allocating memory!\n");
     FILE *fptr;
+    bolt_length m16 = {45, 50, 55, 60, 65, 70,
+                       75, 80, 85, 90, 95, 100,
+                       105, 110, 115, 120, 125,
+                       130, 140, 150, 160, 170,
+                       180, 190, 200, 220, 240,
+                       260, 280, 300, 0};
     int rez, flag = 0;
     int result1_2, result3;
     char *file_name;
     int count;
+    int count_n = 0;
     opterr = 0; // отключить вывод сообщений об ошибках
     if (argc == 1)
     {
@@ -42,6 +49,16 @@ int main(int argc, char *argv[])
             case 'l':
                 // Длина болта [мм]
                 connect_package[1] = atoi(optarg);
+                for (int i = 0; i < ARR_SIZE_LENGTH; i++)
+                {
+                    if (m16.arr_length[i] == connect_package[1])
+                        count_n++;
+                }
+                if (count_n != 1)
+                {
+                    puts("!!! Incorrect bolt length specified !!!");
+                    exit(1);
+                }
                 break;
             case 's':
                 // Толщина соединяемых деталей под головкой болта [мм]

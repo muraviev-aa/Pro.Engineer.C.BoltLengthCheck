@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #define STR_LINE puts("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+#define ARR_SIZE_LENGTH 35 // число чисел в массиве длин болтов
 
 typedef struct
 {
@@ -16,6 +17,11 @@ typedef struct
     double thread_pitch;
     double chamfer;
 } bolt;
+
+typedef struct
+{
+    int arr_length[ARR_SIZE_LENGTH];
+} bolt_length;
 
 // Массив под входные данные
 extern int connect_package[6];
