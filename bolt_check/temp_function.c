@@ -39,7 +39,7 @@ void add_record(bolt info[], int number, unsigned int bolt_name, double washer_t
     info[number].chamfer = chamfer;
 }
 
-// Считываем данные из файла
+// Считываем данные из файла 7798.csv
 int read_data_file(FILE **fptr, bolt info[])
 {
     unsigned int bolt_name, thread_length;
