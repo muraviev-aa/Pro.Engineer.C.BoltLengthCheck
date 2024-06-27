@@ -192,3 +192,28 @@ void print_result_check(int res1_2, int res3)
         printf("%18s%18s%18s\n", "YES", "NO", "NO");
     STR_LINE;
 }
+
+void bolt_length_check(void )
+{
+    int count_str = 0;
+    if (connect_package[0] == 16)
+    {
+        for (int i = 8; i <= 37; i++)
+        {
+            if (bolt_length[i] == connect_package[1])
+                count_str++;
+        }
+    } else if (connect_package[0] == 20)
+    {
+        for (int i = 10; i <= 37; i++)
+        {
+            if (bolt_length[i] == connect_package[1])
+                count_str++;
+        }
+    }
+    if (count_str != 1)
+    {
+        puts("!!! Incorrect bolt length entered !!!");
+        exit(1);
+    }
+}

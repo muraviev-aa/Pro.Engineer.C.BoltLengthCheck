@@ -35,5 +35,6 @@ void bolt_diam_check(int diam);
 int bolt_check_thread(bolt info[], int number, int *arr);
 int bolt_tip_check(bolt info[], int number, int *arr);
 void print_result_check(int res1_2, int res3);
+void bolt_length_check(void);
 
 #endif //BOLT_CHECK_TEMP_FUNCTION_H

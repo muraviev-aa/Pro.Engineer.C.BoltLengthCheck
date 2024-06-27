@@ -4,10 +4,11 @@
 #define SIZE 8 // число строк в файле
 
 int connect_package[6];
-int bolt_length[38] = {22, 25, 28, 30, 32, 35, 38, 40, 45, 50, 55,
-                       60, 65, 70, 75, 80, 85, 90, 95, 100, 105,
-                       110, 115, 120, 125, 130, 140, 150, 160, 170,
-                       180, 190, 200, 220, 240, 260, 280, 300};
+// Перечень длин болтов из ГОСТ
+int bolt_length[] = {22, 25, 28, 30, 32, 35, 38, 40, 45, 50, 55,
+                     60, 65, 70, 75, 80, 85, 90, 95, 100, 105,
+                     110, 115, 120, 125, 130, 140, 150, 160, 170,
+                     180, 190, 200, 220, 240, 260, 280, 300};
 
 int main(int argc, char *argv[])
 {
@@ -47,26 +48,7 @@ int main(int argc, char *argv[])
             case 'l':
                 // Длина болта [мм]
                 connect_package[1] = atoi(optarg);
-                if (connect_package[0] == 16)
-                {
-                    for (int i = 8; i <= 37; i++)
-                    {
-                        if (bolt_length[i] == connect_package[1])
-                            count_l++;
-                    }
-                } else if (connect_package[0] == 20)
-                {
-                    for (int i = 10; i <= 37; i++)
-                    {
-                        if (bolt_length[i] == connect_package[1])
-                            count_l++;
-                    }
-                }
-                if (count_l != 1)
-                {
-                    puts("!!! Incorrect bolt length entered !!!");
-                    exit(1);
-                }
+                bolt_length_check();
                 break;
             case 's':
                 // Толщина соединяемых деталей под головкой болта [мм]
