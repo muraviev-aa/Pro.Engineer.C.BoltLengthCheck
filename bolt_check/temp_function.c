@@ -193,24 +193,67 @@ void print_result_check(int res1_2, int res3)
     STR_LINE;
 }
 
-void bolt_length_check(void )
+void bolt_length_check(void)
 {
     int count_str = 0;
-    if (connect_package[0] == 16)
+    if (connect_package[0] == 6) // болт М6
+    {
+        for (int i = 0; i <= 17; i++)
+        {
+            if (bolt_length[i] == connect_package[1])
+                count_str++;
+        }
+    } else if (connect_package[0] == 8) // болт М8
+    {
+        for (int i = 2; i <= 19; i++)
+        {
+            if (bolt_length[i] == connect_package[1])
+                count_str++;
+        }
+    } else if (connect_package[0] == 10) // болт М10
+    {
+        for (int i = 4; i <= 32; i++)
+        {
+            if (bolt_length[i] == connect_package[1])
+                count_str++;
+        }
+    } else if (connect_package[0] == 12)
+    {
+        for (int i = 5; i <= 35; i++)
+        {
+            if (bolt_length[i] == connect_package[1])
+                count_str++;
+        }
+    } else if (connect_package[0] == 16) // болт М16
     {
         for (int i = 8; i <= 37; i++)
         {
             if (bolt_length[i] == connect_package[1])
                 count_str++;
         }
-    } else if (connect_package[0] == 20)
+    } else if (connect_package[0] == 20) //болт М20
     {
         for (int i = 10; i <= 37; i++)
         {
             if (bolt_length[i] == connect_package[1])
                 count_str++;
         }
+    } else if (connect_package[0] == 24) //болт М24
+    {
+        for (int i = 12; i <= 37; i++)
+        {
+            if (bolt_length[i] == connect_package[1])
+                count_str++;
+        }
+    } else if (connect_package[0] == 30) //болт М30
+    {
+        for (int i = 14; i <= 37; i++)
+        {
+            if (bolt_length[i] == connect_package[1])
+                count_str++;
+        }
     }
+
     if (count_str != 1)
     {
         puts("!!! Incorrect bolt length entered !!!");
