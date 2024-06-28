@@ -91,6 +91,10 @@ void print_input_data(int *arr)
     printf("%s%12s%12s%15s%12s%12s\n", "BoltDiam", "BoltLength", "ThickParts",
            "ThickPartNut", "WasherHead", "WasherNut");
     printf("%8d%12d%12d%15d%12d%12d\n", arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
+    if (arr[1] == bolt_length[0] || arr[1] == bolt_length[2] || arr[1] == bolt_length[4] || arr[1] == bolt_length[6] ||
+        arr[1] == bolt_length[16] || arr[1] == bolt_length[18] || arr[1] == bolt_length[20] ||
+        arr[1] == bolt_length[22] || arr[1] == bolt_length[24])
+        printf("\t\t!!! This bolt length is not recommended !!!\n");
     STR_LINE;
 }
 
@@ -110,7 +114,6 @@ int bolt_check_thread(bolt info[], int number, int *arr)
                    info[i].thread_length, info[i].thread_pitch, info[i].chamfer);
             STR_LINE;
             printf("\t\t\t*** THREAD POSITION ***\n");
-            //printf("NEW is %.1f\n", thread_result);
             if (thread_result > 0) // резьба в крайней детали
             {
                 printf("Thread in detail %.1f ", fabs(thread_result));
@@ -166,7 +169,7 @@ void bolt_diam_check(int diam)
     if (diam != 6 && diam != 8 && diam != 10 && diam != 12 && diam != 16
         && diam != 20 && diam != 24 && diam != 30)
     {
-        puts("!!! Incorrect bolt diameter entered !!!\n");
+        puts("\t\t!!! Incorrect bolt diameter entered !!!\n");
         exit(1);
     }
 }
@@ -256,7 +259,7 @@ void bolt_length_check(void)
 
     if (count_str != 1)
     {
-        puts("!!! Incorrect bolt length entered !!!");
+        puts("\t\t!!! Incorrect bolt length entered !!!");
         exit(1);
     }
 }

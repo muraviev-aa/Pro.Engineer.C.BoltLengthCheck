@@ -67,11 +67,25 @@
 <img src="images/no_yes_no.png" alt="drawing" width="650"/>
 </p>
 
-#### Реализована проверка следующих входных параметров:
+#### Реализована проверка параметров, введенных пользователем:
 
-* контроль диаметра болта;
+* контроль диаметра болта
 
-* контроль длины болта по ГОСТ 7798-70.
+<p align="center">
+<img src="images/error_diam.png" alt="drawing" width="650"/>
+</p>
+
+* контроль длины болта по ГОСТ 7798-70
+
+<p align="center">
+<img src="images/error_length.png" alt="drawing" width="650"/>
+</p>
+
+* контроль нерекомендованных к применению длин болтов
+
+<p align="center">
+<img src="images/length_not_recom.png" alt="drawing" width="650"/>
+</p>
 
 #### Примеры написания командной строки для запуска:
 
