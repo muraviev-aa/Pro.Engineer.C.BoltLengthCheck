@@ -108,4 +108,6 @@ bolt -f 7798.csv -m 20 -l 80 -s 20 -t 10 -w 1 -n 1
 
 **п. 4.5.7 СП 70.13330.2012 
 
+~~~
+
 <p align="right">(<a href="#readme-top">вверх</a>)</p>
