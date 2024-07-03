@@ -9,6 +9,7 @@ int bolt_length[] = {22, 25, 28, 30, 32, 35, 38, 40, 45, 50, 55,
                      60, 65, 70, 75, 80, 85, 90, 95, 100, 105,
                      110, 115, 120, 125, 130, 140, 150, 160, 170,
                      180, 190, 200, 220, 240, 260, 280, 300};
+int flag_g;
 
 int main(int argc, char *argv[])
 {
@@ -20,7 +21,6 @@ int main(int argc, char *argv[])
     int result1_2, result3;
     char *file_name;
     int count;
-    int count_l = 0;
     opterr = 0; // отключить вывод сообщений об ошибках
     if (argc == 1)
     {
@@ -39,6 +39,10 @@ int main(int argc, char *argv[])
                 break;
             case 'f':
                 file_name = optarg;
+                if (strcmp(file_name, "7798.csv") == 0)
+                    flag_g = 1;
+                else if (strcmp(file_name, "52644.csv") == 0)
+                    flag_g = 2;
                 printf("File name is %s.\n", file_name);
                 break;
             case 'm':
@@ -48,7 +52,10 @@ int main(int argc, char *argv[])
             case 'l':
                 // Длина болта [мм]
                 connect_package[1] = atoi(optarg);
-                bolt_length_check();
+                if (flag_g == 1)
+                    bolt_length_check_7798();
+                else if (flag_g == 2)
+                    bolt_length_check_52644();
                 break;
             case 's':
                 // Толщина соединяемых деталей под головкой болта [мм]
@@ -71,6 +78,7 @@ int main(int argc, char *argv[])
                 break;
         }
     }
+
     if (flag != 1)
         print_input_data(connect_package);
     open_file(&fptr, file_name);

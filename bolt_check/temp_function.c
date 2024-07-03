@@ -167,7 +167,8 @@ int bolt_tip_check(bolt info[], int number, int *arr)
 void bolt_diam_check(int diam)
 {
     if (diam != 6 && diam != 8 && diam != 10 && diam != 12 && diam != 16
-        && diam != 20 && diam != 24 && diam != 30)
+        && diam != 20 && diam != 24 && diam != 30 && diam != 36 && diam != 42
+        && diam != 48)
     {
         puts("\t\t!!! Incorrect bolt diameter entered !!!\n");
         exit(1);
@@ -196,7 +197,7 @@ void print_result_check(int res1_2, int res3)
     STR_LINE;
 }
 
-void bolt_length_check(void)
+void bolt_length_check_7798(void)
 {
     int count_str = 0;
     if (connect_package[0] == 6) // болт М6
@@ -251,6 +252,68 @@ void bolt_length_check(void)
     } else if (connect_package[0] == 30) //болт М30
     {
         for (int i = 14; i <= 37; i++)
+        {
+            if (bolt_length[i] == connect_package[1])
+                count_str++;
+        }
+    }
+
+    if (count_str != 1)
+    {
+        puts("\t\t!!! Incorrect bolt length entered !!!");
+        exit(1);
+    }
+}
+
+void bolt_length_check_52644(void)
+{
+    int count_str = 0;
+
+    if (connect_package[0] == 16) // болт М16
+    {
+        for (int i = 7; i <= 37; i++)
+        {
+            if (bolt_length[i] == connect_package[1])
+                count_str++;
+        }
+    } else if (connect_package[0] == 20) // болт М20
+    {
+        for (int i = 9; i <= 37; i++)
+        {
+            if (bolt_length[i] == connect_package[1])
+                count_str++;
+        }
+    } else if (connect_package[0] == 24) // болт М24
+    {
+        for (int i = 11; i <= 37; i++)
+        {
+            if (bolt_length[i] == connect_package[1])
+                count_str++;
+        }
+    } else if (connect_package[0] == 30) // болт М30
+    {
+        for (int i = 14; i <= 37; i++)
+        {
+            if (bolt_length[i] == connect_package[1])
+                count_str++;
+        }
+    } else if (connect_package[0] == 36) // болт М36
+    {
+        for (int i = 17; i <= 37; i++)
+        {
+            if (bolt_length[i] == connect_package[1])
+                count_str++;
+        }
+    } else if (connect_package[0] == 42) // болт М42
+    {
+        for (int i = 20; i <= 37; i++)
+        {
+            if (bolt_length[i] == connect_package[1])
+                count_str++;
+        }
+    } else if (connect_package[0] == 48) // болт М48
+    {
+        for (int i = 23; i <= 37; i++)
         {
             if (bolt_length[i] == connect_package[1])
                 count_str++;

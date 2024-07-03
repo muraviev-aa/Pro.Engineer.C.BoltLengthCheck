@@ -23,6 +23,9 @@ extern int connect_package[6];
 // Массив под длины болтов
 extern int bolt_length[38];
 
+// Флаг ГОСТ
+extern int flag_g;
+
 void print_info(void);
 void print_help(void);
 void print_input_data(int *arr);
@@ -35,6 +38,7 @@ void bolt_diam_check(int diam);
 int bolt_check_thread(bolt info[], int number, int *arr);
 int bolt_tip_check(bolt info[], int number, int *arr);
 void print_result_check(int res1_2, int res3);
-void bolt_length_check(void);
+void bolt_length_check_7798(void);
+void bolt_length_check_52644(void);
 
 #endif //BOLT_CHECK_TEMP_FUNCTION_H
