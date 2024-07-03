@@ -9,12 +9,12 @@
 
 typedef struct
 {
-    unsigned int bolt_name;
-    double washer_thickness;
-    double nut_height;
-    unsigned int thread_length;
-    double thread_pitch;
-    double chamfer;
+    unsigned int bolt_name;       // диаметр болта
+    double washer_thickness;      // толщина шайбы
+    double nut_height;            // высота гайки
+    unsigned int thread_length;   // длина резьбы
+    double thread_pitch;          // шаг резьбы
+    double chamfer;               // фаска
 } bolt;
 
 // Массив под входные данные
