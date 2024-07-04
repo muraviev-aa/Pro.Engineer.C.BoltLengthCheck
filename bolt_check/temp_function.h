@@ -17,7 +17,14 @@ typedef struct
     double chamfer;               // фаска
 } bolt;
 
-// Массив под входные данные
+/* Массив под входные данные
+ * connect_package[0] - диаметр болта
+ * connect_package[1] - длина болта
+ * connect_package[2] - толщина детали (деталей) под головкой болта
+ * connect_package[3] - толщина детали под гайкой
+ * connect_package[4] - количество шайб под головкой болта
+ * connect_package[5] - количество шайб под гайкой
+*/
 extern int connect_package[6];
 
 // Массив под длины болтов

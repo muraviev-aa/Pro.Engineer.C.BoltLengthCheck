@@ -197,6 +197,7 @@ void print_result_check(int res1_2, int res3)
     STR_LINE;
 }
 
+// Проверка длины болта по ГОСТ 7798
 void bolt_length_check_7798(void)
 {
     int count_str = 0;
@@ -265,6 +266,7 @@ void bolt_length_check_7798(void)
     }
 }
 
+// Проверка длины болта по ГОСТ 52644
 void bolt_length_check_52644(void)
 {
     int count_str = 0;
