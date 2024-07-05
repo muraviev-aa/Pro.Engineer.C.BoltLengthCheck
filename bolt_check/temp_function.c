@@ -39,7 +39,7 @@ void add_record(bolt info[], int number, unsigned int bolt_name, double washer_t
     info[number].chamfer = chamfer;
 }
 
-// Считываем данные из файла 7798.csv
+// Считываем данные из файла *.csv
 int read_data_file(FILE **fptr, bolt info[])
 {
     unsigned int bolt_name, thread_length;
@@ -60,7 +60,7 @@ void print_info(void)
     STR_LINE;
     puts("\tConsole application \"Checking bolt length\"");
     puts("Developer Muraviev A.A.");
-    puts("All rights reserved.");
+    puts("Free software licence.");
     puts("For help with the program, use the -h argument.");
     STR_LINE;
     system("pause");
