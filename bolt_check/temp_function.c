@@ -109,8 +109,8 @@ int bolt_check_thread(bolt info[], int number, int *arr)
         {
             thread_result = arr[4] * info[i].washer_thickness + arr[2] + arr[3] - arr[1] + info[i].thread_length;
             printf("\t\t\t*** GOST DATA ***\n");
-            printf("%s%12s%12s%14s%10s\n", "WashThick", "NutHeight", "ThreadLen", "ThreadPitch", "Chamfer");
-            printf("%8.1f%12.1f%12d%14.1f%10.1f\n", info[i].washer_thickness, info[i].nut_height,
+            printf("\t%s%12s%12s%14s%10s\n", "WashThick", "NutHeight", "ThreadLen", "ThreadPitch", "Chamfer");
+            printf("\t%8.1f%12.1f%12d%14.1f%10.1f\n", info[i].washer_thickness, info[i].nut_height,
                    info[i].thread_length, info[i].thread_pitch, info[i].chamfer);
             STR_LINE;
             printf("\t\t\t*** THREAD POSITION ***\n");
@@ -181,19 +181,19 @@ void print_result_check(int res1_2, int res3)
     printf("\n");
     STR_LINE;
     printf("\t\t\t*** BOLT LENGTH CHECK RESULT ***\n");
-    printf("%18s%18s%18s\n", "ThreadRequirement", "TighteningNut", "TipCheck");
+    printf("\t%18s%18s%18s\n", "ThreadRequirement", "TighteningNut", "TipCheck");
     if (res1_2 == 0 && res3 == 0)
-        printf("%18s%18s%18s\n", "YES", "YES", "YES");
+        printf("\t%18s%18s%18s\n", "YES", "YES", "YES");
     else if (res1_2 == 0 && res3 == 1)
-        printf("%18s%18s%18s\n", "YES", "YES", "NO");
+        printf("\t%18s%18s%18s\n", "YES", "YES", "NO");
     else if (res1_2 == 1 && res3 == 0)
-        printf("%18s%18s%18s\n", "NO", "YES", "YES");
+        printf("\t%18s%18s%18s\n", "NO", "YES", "YES");
     else if (res1_2 == 1 && res3 == 1)
-        printf("%18s%18s%18s\n", "NO", "YES", "NO");
+        printf("\t%18s%18s%18s\n", "NO", "YES", "NO");
     else if (res1_2 == 2 && res3 == 0)
-        printf("%18s%18s%18s\n", "YES", "NO", "YES");
+        printf("\t%18s%18s%18s\n", "YES", "NO", "YES");
     else if (res1_2 == 2 && res3 == 1)
-        printf("%18s%18s%18s\n", "YES", "NO", "NO");
+        printf("\t%18s%18s%18s\n", "YES", "NO", "NO");
     STR_LINE;
 }
 
@@ -253,69 +253,6 @@ void bolt_length_check_7798(void)
     } else if (connect_package[0] == 30) //болт М30
     {
         for (int i = 14; i <= 37; i++)
-        {
-            if (bolt_length[i] == connect_package[1])
-                count_str++;
-        }
-    }
-
-    if (count_str != 1)
-    {
-        puts("\t\t!!! Incorrect bolt length entered !!!");
-        exit(1);
-    }
-}
-
-// Проверка длины болта по ГОСТ 52644
-void bolt_length_check_52644(void)
-{
-    int count_str = 0;
-
-    if (connect_package[0] == 16) // болт М16
-    {
-        for (int i = 7; i <= 37; i++)
-        {
-            if (bolt_length[i] == connect_package[1])
-                count_str++;
-        }
-    } else if (connect_package[0] == 20) // болт М20
-    {
-        for (int i = 9; i <= 37; i++)
-        {
-            if (bolt_length[i] == connect_package[1])
-                count_str++;
-        }
-    } else if (connect_package[0] == 24) // болт М24
-    {
-        for (int i = 11; i <= 37; i++)
-        {
-            if (bolt_length[i] == connect_package[1])
-                count_str++;
-        }
-    } else if (connect_package[0] == 30) // болт М30
-    {
-        for (int i = 14; i <= 37; i++)
-        {
-            if (bolt_length[i] == connect_package[1])
-                count_str++;
-        }
-    } else if (connect_package[0] == 36) // болт М36
-    {
-        for (int i = 17; i <= 37; i++)
-        {
-            if (bolt_length[i] == connect_package[1])
-                count_str++;
-        }
-    } else if (connect_package[0] == 42) // болт М42
-    {
-        for (int i = 20; i <= 37; i++)
-        {
-            if (bolt_length[i] == connect_package[1])
-                count_str++;
-        }
-    } else if (connect_package[0] == 48) // болт М48
-    {
-        for (int i = 23; i <= 37; i++)
         {
             if (bolt_length[i] == connect_package[1])
                 count_str++;

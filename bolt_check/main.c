@@ -39,10 +39,6 @@ int main(int argc, char *argv[])
                 break;
             case 'f':
                 file_name = optarg;
-                if (strcmp(file_name, "7798.csv") == 0)
-                    flag_g = 1;
-                else if (strcmp(file_name, "52644.csv") == 0)
-                    flag_g = 2;
                 printf("File name is %s.\n", file_name);
                 break;
             case 'm':
@@ -52,10 +48,7 @@ int main(int argc, char *argv[])
             case 'l':
                 // Длина болта [мм]
                 connect_package[1] = atoi(optarg);
-                if (flag_g == 1)
-                    bolt_length_check_7798();
-                else if (flag_g == 2)
-                    bolt_length_check_52644();
+                bolt_length_check_7798();
                 break;
             case 's':
                 // Толщина соединяемых деталей под головкой болта [мм]
