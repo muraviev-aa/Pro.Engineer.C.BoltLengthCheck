@@ -9,11 +9,10 @@ int bolt_length[] = {22, 25, 28, 30, 32, 35, 38, 40, 45, 50, 55,
                      60, 65, 70, 75, 80, 85, 90, 95, 100, 105,
                      110, 115, 120, 125, 130, 140, 150, 160, 170,
                      180, 190, 200, 220, 240, 260, 280, 300};
-int flag_g;
 
 int main(int argc, char *argv[])
 {
-    bolt *info = malloc(SIZE * sizeof(bolt));
+    bolt *info = (bolt *) malloc(SIZE * sizeof(bolt));
     if (!info)
         printf("Error while allocating memory!\n");
     FILE *fptr;
