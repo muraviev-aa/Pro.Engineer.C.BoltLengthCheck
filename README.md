@@ -119,4 +119,8 @@ bolt -f 7798.csv -m 20 -l 80 -s 20 -t 10 -w 1 -n 1
 
 ~~~
 
+Данное приложение с GUI (graphical user interface) для работы в терминале вы можете увидеть по ссылке:
+
+[проверка длины болта в соединениях без контролируемого натяжения](https://github.com/muraviev-aa/Pro.Engineer.C.BoltLengthCheckTerminal)
+
 <p align="right">(<a href="#readme-top">вверх</a>)</p>
